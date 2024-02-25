@@ -130,7 +130,7 @@ const openModal = (arg, product) => {
   } else if (arg === 'edit') {
     tempProduct.value = { ...product }
     console.log(tempProduct.value)
-    console.log(0, productModal2, 4, productModal2.value)
+    console.log(0, productModal2.value)
     status.value = 'edit'
     productModal2.value.openModal()
   } else if (arg === 'delete') {

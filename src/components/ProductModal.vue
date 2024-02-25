@@ -45,7 +45,7 @@
                     />
                     <div class="mb-3">
                 <label for="customFile" class="form-label">或 上傳圖片
-                  <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
+                  <i class="fas fa-spinner fa-spin" v-if="fileStatus.fileUploading"></i>
                 </label>
                 <input type="file" id="customFile" class="form-control" ref="fileInputRef" @change="uploadFile" />
               </div>

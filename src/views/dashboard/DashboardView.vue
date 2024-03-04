@@ -2,8 +2,9 @@
   <h2>後台</h2>
   <nav>
     <RouterLink to="/">回到前台</RouterLink> |
-    <RouterLink to="/admin/order">order</RouterLink> |
-    <RouterLink to="/admin/backProducts">backProducts</RouterLink> |
+    <RouterLink to="/admin/order">訂單頁面</RouterLink> |
+    <RouterLink to="/admin/backProducts">產品管理頁面</RouterLink> |
+    <RouterLink to="/admin/AdminCoupons">優惠券管理頁面</RouterLink> |
     <a href="#" @click.prevent="logOut">登出</a>
   </nav>
   <RouterView />

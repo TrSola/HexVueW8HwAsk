@@ -76,7 +76,7 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 import ProductModal from '../../components/ProductModal.vue'
 import DelProductModal from '../../components/DelProductModal.vue'
@@ -86,7 +86,6 @@ const productModal2 = ref(null)
 const delProductModal2 = ref(null)
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
-const apiUrl = `${VITE_APP_URL}`
 const apiAdmin = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin`
 
 const status = ref(false)
@@ -97,17 +96,6 @@ const tempProduct = ref({
 const pagination = ref({})
 const isLoading = ref(false)
 
-const checkLogin = () => {
-  axios
-    .post(`${apiUrl}/api/user/check`)
-    .then(() => {
-      getData()
-    })
-    .catch((err) => {
-      alert(err.data.message)
-      window.location = 'index.html'
-    })
-}
 const getData = (page = 1) => {
   isLoading.value = true
   axios
@@ -129,8 +117,6 @@ const openModal = (arg, product) => {
     productModal2.value.openModal()
   } else if (arg === 'edit') {
     tempProduct.value = { ...product }
-    console.log(tempProduct.value)
-    console.log(0, productModal2.value)
     status.value = 'edit'
     productModal2.value.openModal()
   } else if (arg === 'delete') {
@@ -174,14 +160,5 @@ const confirmDelete = () => {
     .catch((err) => alert(err))
 }
 
-onMounted(() => {
-  // Retrieve Token
-  const token = document.cookie.replace(
-    /(?:(?:^|.*;\s*)WillyToken\s*=\s*([^;]*).*$)|^.*$/,
-    '$1'
-  )
-  axios.defaults.headers.common.Authorization = token
-
-  checkLogin()
-})
+getData()
 </script>

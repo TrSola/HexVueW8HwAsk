@@ -1,15 +1,14 @@
 <template>
-  <h2>網頁測試中</h2>
-  <nav>
-  <RouterLink to="/">Home</RouterLink> |
-  <RouterLink to="/about">About</RouterLink> |
-  <RouterLink to="/product">Product</RouterLink> |
-  <RouterLink to="/cart">Cart</RouterLink> |
+  <!-- <RouterLink to="/">首頁</RouterLink> |
+  <RouterLink to="/about">關於我們</RouterLink> |
+  <RouterLink to="/cart">購物車列表</RouterLink> |
+  <br>d
+  <RouterLink to="/login">登入</RouterLink> |
   <br>
-  <RouterLink to="/login">Login</RouterLink> |
-  <br>
-  <RouterLink to="/admin">後台(全部製作完成記得刪掉)</RouterLink> |
-  </nav>
-  <!-- RouterView來自 import router from './router' -->
+  <RouterLink to="/admin">後台快速通關(全部製作完成記得刪掉)</RouterLink> | -->
   <RouterView/>
 </template>
+
+<script setup>
+
+</script>

@@ -254,7 +254,7 @@ const Toast = Swal.mixin({
 })
 
 const tempProductInProductModal = ref({})
-const props = defineProps(['status'])
+const props = defineProps(['status', 'tempProduct'])
 const emit = defineEmits(['confirm-update'])
 
 const { openModal, hideModal, modalRef } = useModal()
@@ -270,7 +270,7 @@ const createImages = () => {
   tempProductInProductModal.value.imagesUrl.push('')
 }
 
-watch(() => props.product, (value) => {
+watch(() => props.tempProduct, (value) => {
   tempProductInProductModal.value = value
   if (!tempProductInProductModal.value.imagesUrl) {
     tempProductInProductModal.value.imagesUrl = []

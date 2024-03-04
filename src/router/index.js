@@ -24,6 +24,11 @@ const routes = [
         path: 'cart',
         name: '購物車頁面',
         component: () => import('../views/CartView.vue')
+      },
+      {
+        path: 'detail',
+        name: '商品細節頁面',
+        component: () => import('../views/DetailView.vue')
       }
     ]
   },
@@ -46,6 +51,11 @@ const routes = [
         path: 'backProducts',
         name: '產品管理頁面',
         component: () => import('../views/dashboard/BackProductsView.vue')
+      },
+      {
+        path: 'AdminCoupons',
+        name: '優惠券管理頁面',
+        component: () => import('../views/dashboard/AdminCoupons.vue')
       }
     ]
   },

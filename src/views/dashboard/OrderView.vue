@@ -5,7 +5,7 @@ import { ref } from 'vue'
 
 import DelModal from '@/components/DelModal.vue'
 import OrderModal from '@/components/OrderModal.vue'
-import Pagination from '@/components/PaginationComponent.vue'
+import PaginationComponent from '@/components/PaginationComponent.vue'
 import Swal from 'sweetalert2'
 import '../../assets/main.css'
 
@@ -72,7 +72,7 @@ const updatePaid = (item) => {
     getOrders(currentPage.value)
     Toast.fire({
       icon: 'success',
-      title: response
+      title: '修改付款狀態成功'
     })
   }).catch((error) => {
     isLoading.value = false
@@ -180,5 +180,5 @@ getOrders()
     ref="delModalRef"
     @del-item="delOrder"
   />
-  <Pagination :pages="pagination" @emit-pages="getOrders" />
+  <PaginationComponent :pages="pagination" @emit-pages="getOrders" />
 </template>

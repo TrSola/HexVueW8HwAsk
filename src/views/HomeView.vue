@@ -3,19 +3,6 @@
       <div class="position-absolute" style="top:0; bottom:0; left:0; right:0; background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
       background-position: center center; opacity: 0.1;"></div>
       <div class="container d-flex flex-column" style="min-height: 100vh;">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand">首頁</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <RouterLink class="nav-item nav-link me-4" to="/">首頁<span class="sr-only">(目前頁面)</span></RouterLink>
-  <RouterLink class="nav-item nav-link me-4" to="/product">產品頁面</RouterLink>
-  <RouterLink class="nav-item nav-link me-4" to="/detail">商品細節頁面</RouterLink>
-            </div>
-          </div>
-        </nav>
         <div class="row justify-content-center my-auto">
           <div class="col-md-4 text-center">
             <h2>Lorem ipsum.</h2>
@@ -149,34 +136,15 @@
     <div class="bg-light py-4">
       <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start">
-          <p class="mb-0 fw-bold">Lorem ipsum dolor sit amet.</p>
+          <p class="mb-0 fw-bold">試試搜尋自己喜歡的商品吧</p>
           <div class="input-group w-md-50 mt-md-0 mt-3">
             <input type="text" class="form-control rounded-0" placeholder="" />
             <div class="input-group-append">
               <button class="btn btn-dark rounded-0" type="button" id="search">
-                Lorem ipsum
+               搜尋
               </button>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-dark py-5">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4">
-          <a class="text-white h4" href="./index.html">LOGO</a>
-          <ul class="d-flex list-unstyled mb-0 h4">
-            <li><a href="#" class="text-white mx-3"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="#" class="text-white mx-3"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#" class="text-white ms-3"><i class="fab fa-line"></i></a></li>
-          </ul>
-        </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end align-items-start text-white">
-          <div class="mb-md-0 mb-1">
-            <p class="mb-0">02-3456-7890</p>
-            <p class="mb-0">service@mail.com</p>
-          </div>
-          <p class="mb-0">© 2020 LOGO All Rights Reserved.</p>
         </div>
       </div>
     </div>

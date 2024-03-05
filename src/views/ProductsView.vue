@@ -79,21 +79,6 @@
           </div>
         </div>
       </div> -->
-      <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand">商品頁面</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-              <RouterLink class="nav-item nav-link me-4" to="/">首頁</RouterLink>
-  <RouterLink class="nav-item nav-link me-4" to="/product">產品頁面<span class="sr-only">(目前頁面)</span></RouterLink>
-  <RouterLink class="nav-item nav-link me-4" to="/detail">商品細節頁面</RouterLink>
-            </div>
-        </div>
-      </nav>
-    </div>
     <div class="position-relative d-flex align-items-center justify-content-center" style="min-height: 400px;">
       <div class="position-absolute" style="top:0; bottom: 0; left: 0; right: 0; background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80); background-position: center center; opacity: 0.1;"></div>
       <h2 class="fw-bold">挑選一些自己喜歡的商品吧！</h2>
@@ -168,7 +153,16 @@
           </div>
         </div>
         <div class="col-md-8">
-            {{ `此頁有 ${products.length} 項產品` }}
+          <template v-if="!products.length">
+            <div>
+              載入中
+            </div>
+          </template>
+          <template v-else>
+            <div>
+              {{ `此頁有 ${products.length} 項產品` }}
+            </div>
+          </template>
           <div class="row">
             <div class="col-md-6" v-for="product in products" :key="product.id">
               <div class="card border-0 mb-4 position-relative position-relative">
@@ -179,6 +173,7 @@
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
                     <RouterLink class="mb-0 mt-3" to="/detail">{{product.title}}</RouterLink>
+                    <a class="mb-0 mt-3" href="/src/views/DetailView">123</a>
                   </h4>
                   <p class="card-text mb-0">NT${{product.price}} <span class="text-muted "><del>NT${{product.origin_price}}</del></span></p>
                   <p class="text-muted mt-3"></p>
@@ -210,25 +205,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="bg-dark py-5">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4">
-          <a class="text-white h4" href="./index.html">LOGO</a>
-          <ul class="d-flex list-unstyled mb-0 h4">
-            <li><a href="#" class="text-white mx-3"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="#" class="text-white mx-3"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#" class="text-white ms-3"><i class="fab fa-line"></i></a></li>
-          </ul>
-        </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end align-items-start text-white">
-          <div class="mb-md-0 mb-1">
-            <p class="mb-0">02-3456-7890</p>
-            <p class="mb-0">service@mail.com</p>
-          </div>
-          <p class="mb-0">© 2020 LOGO All Rights Reserved.</p>
-        </div>;
       </div>
     </div>
 </template>

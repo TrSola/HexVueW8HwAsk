@@ -16,20 +16,20 @@ const routes = [
         component: () => import('../views/AboutView.vue')
       },
       {
-        path: 'product',
+        path: 'products',
         name: '產品頁面',
         component: () => import('../views/ProductsView.vue')
       },
       {
-        path: 'cart',
-        name: '購物車頁面',
-        component: () => import('../views/CartView.vue')
-      },
-      {
-        path: 'detail',
-        name: '商品細節頁面',
-        component: () => import('../views/DetailView.vue')
+        path: 'product/:id',
+        name: '單一產品頁面',
+        component: () => import('../views/productView.vue')
       }
+      // {
+      //   path: 'cart',
+      //   name: '購物車頁面',
+      //   component: () => import('../views/CartView.vue')
+      // },
     ]
   },
   {

@@ -23,8 +23,10 @@
     "dotenv": "^16.3.1",
     "pinia": "^2.1.7",
     "sweetalert2": "^11.10.5",
+    "swiper": "^8.4.7",
     "vee-validate": "^4.12.5",
     "vue": "^3.3.11",
+    "vue-awesome-swiper": "^5.0.1",
     "vue-axios": "^3.5.2",
     "vue-loading-overlay": "^6.0.4",
     "vue-router": "^4.2.5"

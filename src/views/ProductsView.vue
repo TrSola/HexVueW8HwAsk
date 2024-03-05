@@ -1,84 +1,4 @@
 <template>
- <!-- <div class='container'>
-        <div class='row py-3'>
-          <div class='col-md-6'>
-            <h2>產品列表</h2>
-            <table class='table table-hover mt-4'>
-              <thead>
-                <tr>
-                  <th>產品名稱</th>
-                  <th>原價</th>
-                  <th>售價</th>
-                  <th>是否啟用</th>
-                  <th>查看細節</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for='product in products' :key='product.id'>
-                  <td width='150'>{{product.title}}</td>
-                  <td width='120'>{{product.origin_price}}</td>
-                  <td width='120'>{{product.price}}</td>
-                  <td width='150'>
-                    <template v-if='product.is_enabled'>
-                      <p class='text-success'>啟用</p>
-                    </template>
-                    <template v-else>
-                      <p>未啟用</p>
-                    </template>
-                  </td>
-                  <td width='120'>
-                    <button
-                      class='btn btn-primary'
-                      type='button'
-                      @click='seeDetails(product)'
-                    >
-                      查看細節
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            {{ `目前有 ${products.length} 項產品` }}
-          </div>
-          <div class='col-md-6'>
-            <h2>單一產品細節</h2>
-            <template v-if='tempProduct.title'>
-              <div class='card mb-3'>
-                <img :src='tempProduct.imageUrl' alt='' style="background-size: cover; height: 350px;"/>
-                <div class='card-body'>
-                  <h5 class='card-title'>
-                    {{ tempProduct.title}}
-                    <span class='badge bg-primary ms-2'
-                      >{{tempProduct.category}}</span
-                    >
-                  </h5>
-                  <p class='card-text'>
-                    商品描述 : {{tempProduct.description}}
-                  </p>
-                  <p class='card-text'>商品內容 : {{tempProduct.content}}</p>
-                  <p>
-                    <span class='me-2'> {{tempProduct.price}} </span
-                    ><span class='text-muted text-decoration-line-through'>
-                      {{tempProduct.origin_price}} </span
-                    ><span>/ {{tempProduct.unit}}</span>
-                  </p>
-                </div>
-              </div>
-              <img
-                :src='image'
-                alt=''
-                v-for='(image, i) in tempProduct.imagesUrl'
-                :key='"image" + i'
-                class='image m-2 img-fluid'
-                style=" height: 150px;  background-size: cover;"
-              />
-            </template>
-            <template v-else>
-              <p>請選擇一個商品查看</p>
-            </template>
-          </div>
-        </div>
-      </div> -->
     <div class="position-relative d-flex align-items-center justify-content-center" style="min-height: 400px;">
       <div class="position-absolute" style="top:0; bottom: 0; left: 0; right: 0; background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80); background-position: center center; opacity: 0.1;"></div>
       <h2 class="fw-bold">挑選一些自己喜歡的商品吧！</h2>
@@ -99,11 +19,12 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="card-body py-0">
                   <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">item1</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item2</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item3</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item4</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item5</a></li>
+                    <li>
+                    <RouterLink :to="`/products`" class="py-2 d-block text-muted">全部商品</RouterLink>
+                    </li>
+                    <li v-for="item in categories" :key="'categories' + item">
+                    <RouterLink :to="`/products?category=${item}`" class="py-2 d-block text-muted">{{ item }}</RouterLink>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -120,11 +41,11 @@
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="card-body py-0">
                   <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">item1</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item2</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item3</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item4</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item5</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item21</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item22</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item23</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item24</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item25</a></li>
                   </ul>
                 </div>
               </div>
@@ -141,11 +62,11 @@
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="card-body py-0">
                   <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">item1</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item2</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item3</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item4</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item5</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item31</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item32</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item33</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item34</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">item35</a></li>
                   </ul>
                 </div>
               </div>
@@ -166,14 +87,13 @@
           <div class="row">
             <div class="col-md-6" v-for="product in products" :key="product.id">
               <div class="card border-0 mb-4 position-relative position-relative">
-                <img src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80" class="card-img-top rounded-0" alt="商品圖片">
+                <img :src="product.imageUrl" class="card-img-top rounded-0 object-fit-cover" alt="商品圖片" height="500">
                 <a href="#" class="text-dark">
                   <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <RouterLink class="mb-0 mt-3" to="/detail">{{product.title}}</RouterLink>
-                    <a class="mb-0 mt-3" href="/src/views/DetailView">123</a>
+                    <RouterLink class="mb-0 mt-3" :to="`/product/${product.id}`">{{product.title}}</RouterLink>
                   </h4>
                   <p class="card-text mb-0">NT${{product.price}} <span class="text-muted "><del>NT${{product.origin_price}}</del></span></p>
                   <p class="text-muted mt-3"></p>
@@ -192,38 +112,25 @@
           </nav>
         </div>
       </div>
-    <div class="bg-light py-4">
-      <div class="container">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start">
-          <p class="mb-0 fw-bold">試試搜尋自己喜歡的商品吧</p>
-          <div class="input-group w-md-50 mt-md-0 mt-3">
-            <input type="text" class="form-control rounded-0" placeholder="" />
-            <div class="input-group-append">
-              <button class="btn btn-dark rounded-0" type="button" id="search">
-               搜尋
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 </template>
 
 <script setup>
 import '../assets/all.css'
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import PaginationComponent from '../components/PaginationComponent.vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
+
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const products = ref([])
 const pagination = ref({})
-// const tempProduct = ref({})
-// const seeDetails = (product) => {
-//   tempProduct.value = product
-// }
+const categories = ref(['動物', '食物'])
+
 const getData = (page = 1) => {
-  const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+  const { category = '' } = route.query
   axios
-    .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?page=${page}`)
+    .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=${category}&page=${page}`)
     .then((res) => {
       products.value = res.data.products
       pagination.value = res.data.pagination
@@ -239,4 +146,12 @@ onMounted(() => {
   axios.defaults.headers.common.Authorization = token
   getData()
 })
+
+watch(
+  () => route.query,
+  () => {
+    getData()
+  }
+  // { deep: true }
+)
 </script>

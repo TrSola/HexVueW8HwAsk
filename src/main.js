@@ -16,6 +16,7 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import { date, currency } from '@/methods/filters'
 
 import App from './App.vue'
+import '../src/assets/main.css'
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])

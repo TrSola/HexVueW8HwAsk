@@ -122,3 +122,7 @@ button:focus-visible {
 .colored-toast .swal2-html-container {
   color: white;
 }
+
+body {
+  padding-top: 3rem;
+}

@@ -45,7 +45,7 @@
               </div>
             </div>
             <div class="col-6">
-              <RouterLink class="text-nowrap btn btn-dark w-100 py-2" to="/cart">加到購物車</RouterLink>
+              <a class="text-nowrap btn btn-dark w-100 py-2" @click.prevent="addToCart(product.id)">加到購物車</a>
             </div>
           </div>
         </div>
@@ -83,43 +83,59 @@ import '../assets/all.css'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
-// import Swiper from 'swiper'
-import 'swiper/css'
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+// import { storeToRefs } from 'pinia'
+import { useCartStore } from '../stores/cartStore'
+const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
 const route = useRoute()
 const product = ref({})
+const cartStoreFromPinia = useCartStore()
+// const { carts } = storeToRefs(cartStoreFromPinia)
+const { addToCart } = cartStoreFromPinia
+// const cart = ref([])
+
 const getProduct = () => {
   const { id } = route.params
-  const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${id}`
+  const url = `${apiUrl}/api/${apiPath}/product/${id}`
   axios
     .get(url)
-    .then((response) => {
-      product.value = response.data.product
+    .then((res) => {
+      product.value = res.data.product
     })
     .catch((err) => {
       alert(err.response.data.message)
     })
 }
+// const addToCart = (id) => {
+//   const url = `${apiUrl}/api/${apiPath}/cart`
+//   const cartData = {
+//     product_id: product.value.id,
+//     qty: 1
+//   }
+
+//   axios
+//     .post(url, { data: cartData })
+//     .then((res) => {
+//       getProduct()
+//     })
+//     .catch((err) => {
+//       alert(err.response.data.message)
+//     })
+// }
+// const getCart = () => {
+//   const url = `${apiUrl}/api/${apiPath}/cart`
+//   axios
+//     .get(url)
+//     .then((res) => {
+//       cart.value = res.data.data
+//       console.log(cart)
+//     })
+//     .catch((err) => {
+//       alert(err.response.data.message)
+//     })
+// }
 onMounted(() => {
   getProduct()
+  // getCart()
 })
-// const mySwiper = new Swiper('.swiper-container', {
-//   loop: true,
-//   autoplay: {
-//     delay: 2500,
-//     disableOnInteraction: false
-//   },
-//   slidesPerView: 2,
-//   spaceBetween: 10,
-//   breakpoints: {
-//     767: {
-//       slidesPerView: 3,
-//       spaceBetween: 30
-//     }
-//   },
-//   navigation: {
-//     nextEl: '.swiper-button-next',
-//     prevEl: '.swiper-button-prev'
-//   }
-// })
+
 </script>

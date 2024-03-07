@@ -83,15 +83,12 @@ import '../assets/all.css'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
-// import { storeToRefs } from 'pinia'
 import { useCartStore } from '../stores/cartStore'
 const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
 const route = useRoute()
 const product = ref({})
 const cartStoreFromPinia = useCartStore()
-// const { carts } = storeToRefs(cartStoreFromPinia)
 const { addToCart } = cartStoreFromPinia
-// const cart = ref([])
 
 const getProduct = () => {
   const { id } = route.params
@@ -105,37 +102,8 @@ const getProduct = () => {
       alert(err.response.data.message)
     })
 }
-// const addToCart = (id) => {
-//   const url = `${apiUrl}/api/${apiPath}/cart`
-//   const cartData = {
-//     product_id: product.value.id,
-//     qty: 1
-//   }
-
-//   axios
-//     .post(url, { data: cartData })
-//     .then((res) => {
-//       getProduct()
-//     })
-//     .catch((err) => {
-//       alert(err.response.data.message)
-//     })
-// }
-// const getCart = () => {
-//   const url = `${apiUrl}/api/${apiPath}/cart`
-//   axios
-//     .get(url)
-//     .then((res) => {
-//       cart.value = res.data.data
-//       console.log(cart)
-//     })
-//     .catch((err) => {
-//       alert(err.response.data.message)
-//     })
-// }
 onMounted(() => {
   getProduct()
-  // getCart()
 })
 
 </script>

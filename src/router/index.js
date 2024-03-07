@@ -24,12 +24,12 @@ const routes = [
         path: 'product/:id',
         name: '單一產品頁面',
         component: () => import('../views/productView.vue')
+      },
+      {
+        path: 'cart',
+        name: '購物車頁面',
+        component: () => import('../views/CartView.vue')
       }
-      // {
-      //   path: 'cart',
-      //   name: '購物車頁面',
-      //   component: () => import('../views/CartView.vue')
-      // },
     ]
   },
   {

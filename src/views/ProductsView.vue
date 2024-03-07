@@ -13,7 +13,6 @@
                   <h4 class="mb-0">
                     sideUl
                   </h4>
-                  <i class="fas fa-chevron-down"></i>
                 </div>
               </div>
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -25,48 +24,6 @@
                     <li v-for="item in categories" :key="'categories' + item">
                     <RouterLink :to="`/products?category=${item}`" class="py-2 d-block text-muted">{{ item }}</RouterLink>
                     </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                <div class="d-flex justify-content-between align-items-center pe-1">
-                  <h4 class="mb-0">
-                    Ul2
-                  </h4>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">item21</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item22</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item23</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item24</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item25</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                <div class="d-flex justify-content-between align-items-center pe-1">
-                  <h4 class="mb-0">
-                    Ul3
-                  </h4>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">item31</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item32</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item33</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item34</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">item35</a></li>
                   </ul>
                 </div>
               </div>
@@ -89,7 +46,7 @@
               <div class="card border-0 mb-4 position-relative position-relative">
                 <img :src="product.imageUrl" class="card-img-top rounded-0 object-fit-cover" alt="商品圖片" height="500">
                 <a href="#" class="text-dark">
-                  <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
+                  <!-- <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i> -->
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">

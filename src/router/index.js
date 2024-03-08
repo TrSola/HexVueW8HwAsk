@@ -33,6 +33,16 @@ const routes = [
     ]
   },
   {
+    path: '/checkOut',
+    name: '結帳頁面',
+    component: () => import('../views/checkOutView.vue')
+  },
+  {
+    path: '/checkOutSuccess',
+    name: '結帳成功頁面',
+    component: () => import('../views/checkOutSuccess.vue')
+  },
+  {
     path: '/login',
     name: '登入頁面',
     component: () => import('../views/LoginView.vue')

@@ -264,10 +264,18 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import '../assets/main.css'
-import { useSweetAlert } from '../stores/sweetAlertStore'
 
-const sweetAlertStoreFromPinia = useSweetAlert()
-const { Toast } = sweetAlertStoreFromPinia
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'center',
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true
+})
 const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
 
 const formRef = ref(null)

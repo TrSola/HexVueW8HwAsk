@@ -6,6 +6,7 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
+              <RouterLink class="nav-item nav-link me-4" to="/login">登入頁面</RouterLink>
               <RouterLink class="nav-item nav-link me-4" to="/">首頁<span class="sr-only">(目前頁面)</span></RouterLink>
               <RouterLink class="nav-item nav-link me-4" to="/products">產品頁面</RouterLink>
               <RouterLink class="nav-item nav-link me-4 position-relative btn btn-outline-primary" to="/cart">

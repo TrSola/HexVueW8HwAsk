@@ -9,11 +9,10 @@
               <RouterLink class="nav-item nav-link me-4" to="/login">登入頁面</RouterLink>
               <RouterLink class="nav-item nav-link me-4" to="/">首頁<span class="sr-only">(目前頁面)</span></RouterLink>
               <RouterLink class="nav-item nav-link me-4" to="/products">產品頁面</RouterLink>
-              <RouterLink class="nav-item nav-link me-4 position-relative btn btn-outline-primary" to="/cart">
-                <i class="bi bi-cart">icon跑不出來</i>
+              <RouterLink class="nav-item nav-link me-4 position-relative" to="/cart">
+                <i class="bi bi-cart"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {{ carts?.carts?.length }}
-    <span class="visually-hidden">unread messages</span>
   </span>
               </RouterLink>
             </div>

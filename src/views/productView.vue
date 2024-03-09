@@ -32,20 +32,20 @@
             <div class="col-6">
               <div class="input-group my-3 bg-light rounded">
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-dark border-0 py-2" type="button" id="button-addon1">
+                  <button class="btn btn-outline-dark border-0 py-2" type="button" id="button-addon1" @click="product.num--" :disabled="product.num <= 1">
                     <i class="fas fa-minus"></i>
                   </button>
                 </div>
-                <input type="text" class="form-control border-0 text-center my-auto shadow-none bg-light" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="1">
+                <input type.prevent="number" class="form-control border-0 text-center my-auto shadow-none bg-light" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"  min="1" v-model="product.num">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-dark border-0 py-2" type="button" id="button-addon2">
+                  <button class="btn btn-outline-dark border-0 py-2" type="button" id="button-addon2" @click="product.num++">
                     <i class="fas fa-plus"></i>
                   </button>
                 </div>
               </div>
             </div>
             <div class="col-6">
-              <a class="text-nowrap btn btn-dark w-100 py-2" @click.prevent="addToCart(product.id)">加到購物車</a>
+              <a class="text-nowrap btn btn-dark w-100 py-2" @click.prevent="addToCart(product.id, product.num)">加到購物車</a>
             </div>
           </div>
         </div>

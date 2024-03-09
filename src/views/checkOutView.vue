@@ -36,7 +36,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4" v-else>再去選購一些商品吧！</div>
+        <div class="col-md-4" v-else><h2>再去選購一些商品吧！</h2></div>
         <div class="col-md-6">
          <v-form
            ref='formRef'
@@ -139,7 +139,9 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const cart = ref({})
 const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
 const formRef = ref(null)
@@ -165,7 +167,7 @@ const createOrder = () => {
         alert(response.data.message)
         formRef.value.resetForm()
         getCart()
-        window.location = '/checkOutSuccess'
+        router.push('/checkOutSuccess')
       })
       .catch((err) => {
         alert(err.response.data.message)

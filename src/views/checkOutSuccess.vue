@@ -2,14 +2,14 @@
    <div class="position-relative d-flex">
     <div class="container d-flex flex-column" style="min-height: 100vh;">
       <nav class="navbar navbar-expand-lg navbar-light px-0">
-        <a class="navbar-brand" href="./index.html">Navbar</a>
+        <a class="navbar-brand" href="./">回首頁</a>
       </nav>
       <div class="row my-auto pb-7">
         <div class="col-md-4 d-flex flex-column">
           <div class="my-auto">
-            <h2>Checkout Success</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
-            <a href="./index.html" class="btn btn-dark mt-4 px-5">Back To Home</a>
+            <h2>結帳成功！</h2>
+            <p>期待您下次光臨</p>
+            <router-link to="/" class="btn btn-dark mt-4 px-5">回首頁</router-link>
           </div>
         </div>
       </div>
@@ -20,3 +20,11 @@
   </div>
 
 </template>
+
+<script ></script>
+
+<style>
+body {
+ padding-top: 0;
+}
+</style>

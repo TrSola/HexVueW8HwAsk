@@ -32,11 +32,11 @@ export const useCartStore = defineStore('cartStore', () => {
         alert(err.response.data.message)
       })
   }
-  const addToCart = (id) => {
+  const addToCart = (id, qty = 1) => {
     const url = `${apiUrl}/api/${apiPath}/cart`
     const cartData = {
       product_id: id,
-      qty: 1
+      qty
     }
     axios
       .post(url, { data: cartData })

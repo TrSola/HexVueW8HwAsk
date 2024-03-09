@@ -74,7 +74,7 @@
          <!-- 購物車列表 -->
          <template v-if="cart.carts && cart.carts.length === 0">
            <div class='text-end'>
-           <h2>先放一項商品試試吧</h2>
+           <h2>試試放一項商品吧</h2>
          </div>
          </template>
         <template v-else>
@@ -168,22 +168,9 @@
 import userProductModal from '../components/userProductModal.vue'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import { SwalHandle } from '../stores/sweetAlertStore'
 import Swal from 'sweetalert2'
-import '../assets/main.css'
-
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'center',
-  iconColor: 'white',
-  customClass: {
-    popup: 'colored-toast'
-  },
-  showConfirmButton: false,
-  timer: 1500,
-  timerProgressBar: true
-})
 const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
-
 const userProductModalRef = ref(null)
 const loadingStatus = ref({
   loadingItem: ''
@@ -236,10 +223,7 @@ const addToCart = (id, qty = 1) => {
     .then(() => {
       loadingStatus.value.loadingItem = ''
       getCart()
-      Toast.fire({
-        icon: 'success',
-        title: '已加入購物車'
-      })
+      SwalHandle.showSuccessMsg('已加入購物車')
     })
     .catch((err) => {
       alert(err.response.data.message)
@@ -256,10 +240,7 @@ const updateCart = (data) => {
   axios
     .put(url, { data: cartData })
     .then(() => {
-      Toast.fire({
-        icon: 'success',
-        title: '已更新購物車'
-      })
+      SwalHandle.showSuccessMsg('已更新購物車')
       loadingStatus.value.loadingItem = ''
       getCart()
     })
@@ -278,10 +259,7 @@ const deleteAllCarts = () => {
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      Toast.fire({
-        icon: 'warning',
-        title: '刪除成功'
-      })
+      SwalHandle.showSuccessMsg('刪除成功')
       axios
         .delete(url)
         .then(() => {
@@ -291,10 +269,7 @@ const deleteAllCarts = () => {
           alert(err.response.data.message)
         })
     } else if (result.isDenied) {
-      Toast.fire({
-        icon: 'info',
-        title: '已為您保留購物車內容'
-      })
+      SwalHandle.showErrorMsg('已為您保留購物車')
     }
   }).catch(() => {
     alert('伺服器錯誤')
@@ -323,10 +298,7 @@ const removeCartItem = (id) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
       loadingStatus.value.loadingItem = id
-      Toast.fire({
-        icon: 'warning',
-        title: '刪除成功'
-      })
+      SwalHandle.showSuccessMsg('刪除成功')
       axios
         .delete(url)
         .then(() => {
@@ -337,10 +309,7 @@ const removeCartItem = (id) => {
           alert(err.response.data.message)
         })
     } else if (result.isDenied) {
-      Toast.fire({
-        icon: 'info',
-        title: '已為您保留該品項'
-      })
+      SwalHandle.showErrorMsg('已為您保留該品項')
     }
   })
   const url = `${apiUrl}/api/${apiPath}/cart/${id}`

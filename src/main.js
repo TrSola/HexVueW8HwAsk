@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'bootstrap/scss/bootstrap.scss'
+import 'bootstrap-icons/font/bootstrap-icons.scss'
 import router from './router'
 import {
   Field, Form, ErrorMessage, defineRule, configure

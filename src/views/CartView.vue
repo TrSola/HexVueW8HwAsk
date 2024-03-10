@@ -72,7 +72,7 @@
            </tbody>
          </table>
          <!-- 購物車列表 -->
-         <template v-if="cart.carts && cart.carts.length === 0">
+         <template v-if="carts.carts && carts.carts.length === 0">
            <div class='text-end'>
            <h2>試試放一項商品吧</h2>
          </div>
@@ -98,8 +98,8 @@
              </tr>
            </thead>
            <tbody>
-             <template v-if='cart.carts'>
-               <tr v-for='cartItem in cart.carts' :key='cartItem.id'>
+             <template v-if='carts.carts'>
+               <tr v-for='cartItem in carts.carts' :key='cartItem.id'>
                  <td>
                    <button
                      type='button'
@@ -139,7 +139,7 @@
                  </td>
                  <td class='text-end'>
                    <small
-                     v-if='cart.final_total !== cart.total'
+                     v-if='carts.final_total !== carts.total'
                      class='text-success'
                      >折扣價：</small
                    >
@@ -151,11 +151,11 @@
            <tfoot>
              <tr>
                <td colspan='3' class='text-end'>總計</td>
-               <td class='text-end'>{{ cart.total }}</td>
+               <td class='text-end'>{{ carts.total }}</td>
              </tr>
-             <tr v-if='cart.final_total !== cart.total'>
+             <tr v-if='carts.final_total !== carts.total'>
                <td colspan='3' class='text-end text-success'>折扣價</td>
-               <td class='text-end text-success'>{{ cart.final_total }}</td>
+               <td class='text-end text-success'>{{ carts.final_total }}</td>
              </tr>
            </tfoot>
          </table>
@@ -170,7 +170,10 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { SwalHandle } from '../stores/sweetAlertStore'
 import Swal from 'sweetalert2'
+import { useCartStore } from '../stores/cartStore'
+import { storeToRefs } from 'pinia'
 const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
+
 const userProductModalRef = ref(null)
 const loadingStatus = ref({
   loadingItem: ''
@@ -178,7 +181,9 @@ const loadingStatus = ref({
 const products = ref([])
 const product = ref({})
 
-const cart = ref({})
+// const cart = ref({})
+const cartStoreFromPinia = useCartStore()
+const { carts } = storeToRefs(cartStoreFromPinia)
 // product
 const getProducts = () => {
   const url = `${apiUrl}/api/${apiPath}/products`
@@ -281,7 +286,7 @@ const getCart = () => {
   axios
     .get(url)
     .then((response) => {
-      cart.value = response.data.data
+      carts.value = response.data.data
     })
     .catch((err) => {
       alert(err.response.data.message)

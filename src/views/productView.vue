@@ -25,6 +25,7 @@
           </div>
         </div>
         <div class="col-md-5">
+          {{  product }}
           <h2 class="fw-bold h1 mb-1">{{ product.title }}</h2>
           <p class="mb-0 text-muted text-end"><del>${{ product.origin_price }}</del></p>
           <p class="h4 fw-bold text-end">${{ product.price }}</p>
@@ -36,7 +37,7 @@
                     <i class="fas fa-minus"></i>
                   </button>
                 </div>
-                <input type.prevent="number" class="form-control border-0 text-center my-auto shadow-none bg-light" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"  min="1" v-model="product.num">
+                <input type.prevent="number" class="form-control border-0 text-center my-auto shadow-none bg-light" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" v-model="product.num" value="1">
                 <div class="input-group-append">
                   <button class="btn btn-outline-dark border-0 py-2" type="button" id="button-addon2" @click="product.num++">
                     <i class="fas fa-plus"></i>
@@ -97,6 +98,7 @@ const getProduct = () => {
     .get(url)
     .then((res) => {
       product.value = res.data.product
+      product.value.num = 1
     })
     .catch((err) => {
       alert(err.response.data.message)

@@ -147,7 +147,7 @@ const foodProducts = ref({})
 
 const getAnimalData = (page = 1) => {
   axios
-    .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=animal&page=${page}`)
+    .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=動物&page=${page}`)
     .then((res) => {
       animalProducts.value = res.data.products
       pagination.value = res.data.pagination
@@ -157,7 +157,7 @@ const getAnimalData = (page = 1) => {
 
 const getFoodData = (page = 1) => {
   axios
-    .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=food&page=${page}`)
+    .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=食物&page=${page}`)
     .then((res) => {
       foodProducts.value = res.data.products
       pagination.value = res.data.pagination
@@ -166,11 +166,11 @@ const getFoodData = (page = 1) => {
 }
 
 onMounted(() => {
-  const token = document.cookie.replace(
-    /(?:(?:^|.*;\s*)WillyToken\s*=\s*([^;]*).*$)|^.*$/,
-    '$1'
-  )
-  axios.defaults.headers.common.Authorization = token
+  // const token = document.cookie.replace(
+  //   /(?:(?:^|.*;\s*)WillyToken\s*=\s*([^;]*).*$)|^.*$/,
+  //   '$1'
+  // )
+  // axios.defaults.headers.common.Authorization = token
   getAnimalData()
   getFoodData()
 })

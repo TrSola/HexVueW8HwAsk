@@ -22,7 +22,7 @@
               <tbody>
                 <tr>
                   <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">小計</th>
-                  <td class="text-end border-0 px-0 pt-4">NT${{ cart.final_total }}</td>
+                  <td class="text-end border-0 px-0 pt-4">NT${{ Math.floor(cart.final_total) }}</td>
                 </tr>
                 <tr>
                   <th scope="row" class="border-0 px-0 pt-0 pb-4 font-weight-normal">付款方式</th>
@@ -32,7 +32,7 @@
             </table>
             <div class="d-flex justify-content-between mt-4">
               <p class="mb-0 h4 fw-bold">總計</p>
-              <p class="mb-0 h4 fw-bold">NT${{ cart.final_total }}</p>
+              <p class="mb-0 h4 fw-bold">NT${{ Math.floor(cart.final_total) }}</p>
             </div>
           </div>
         </div>

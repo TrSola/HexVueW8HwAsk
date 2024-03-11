@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                   <th scope="row" class="border-0 px-0 pt-0 pb-4 font-weight-normal">付款方式</th>
-                  <td class="text-end border-0 px-0 pt-0 pb-4">面交</td>
+                  <td class="text-end border-0 px-0 pt-0 pb-4">ApplePay</td>
                 </tr>
               </tbody>
             </table>
@@ -140,6 +140,7 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { SwalHandle } from '../stores/sweetAlertStore'
 
 const router = useRouter()
 const cart = ref({})
@@ -164,7 +165,7 @@ const createOrder = () => {
     axios
       .post(url, { data: order })
       .then((response) => {
-        alert(response.data.message)
+        SwalHandle.showSuccessMsg('結帳成功!')
         formRef.value.resetForm()
         getCart()
         router.push('/checkOutSuccess')

@@ -14,8 +14,8 @@
         </div>
       </div>
     </div>
-    <div class="w-md-50 w-100 position-absolute opacity-1" style="z-index: -1; min-height: 100vh; right: 0; background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-    background-position: center center;">
+    <div class="w-md-50 w-100 position-absolute opacity-1" style="z-index: -1; min-height: 100vh; right: 0; background-image: url(https://plus.unsplash.com/premium_photo-1663040444770-37b9a5a68384?w=1950&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW5pbWFscyUyMGZyaWVuZGx5fGVufDB8fDB8fHww);
+    background-position: center center; background-repeat: no-repeat;">
     </div>
   </div>
 

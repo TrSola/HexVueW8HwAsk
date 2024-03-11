@@ -116,7 +116,7 @@
     <div class="container my-7" v-if="foodProducts.length > 0">
       <div class="row">
         <div class="col-md-6">
-          <img :src="foodProducts[0].imageUrl" alt="" class="img-fluid object-fit-cover" style="height: 350px">
+          <img :src="foodProducts[0].imageUrl" alt="" class="img-fluid object-fit-cover" style="height: 450px; width: 100%">
         </div>
         <div class="col-md-4 m-auto text-center">
           <h4 class="mt-4">{{ foodProducts[0].title }}</h4>
@@ -125,7 +125,7 @@
       </div>
       <div class="row flex-row-reverse justify-content-between mt-4">
         <div class="col-md-6">
-          <img :src="foodProducts[1].imageUrl" alt="" class="img-fluid object-fit-cover" style="height: 350px">
+          <img :src="foodProducts[1].imageUrl" alt="" class="img-fluid object-fit-cover" style="height: 450px; width: 100%">
         </div>
         <div class="col-md-4 m-auto text-center">
           <h4 class="mt-4">{{ foodProducts[1].title }}</h4>

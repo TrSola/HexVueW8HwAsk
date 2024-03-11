@@ -67,7 +67,7 @@
               <a href="#" class="text-dark">
               </a>
               <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="#">{{ product.title }}</a></h4>
+                <h4 class="mb-0 mt-3">{{ product.title }}</h4>
                 <p class="card-text mb-0">${{ product.price }} <span class="text-muted "><del>${{ product.origin_price }}</del></span></p>
                 <p class="text-muted mt-3"></p>
               </div>
@@ -108,3 +108,6 @@ onMounted(() => {
 })
 
 </script>
+
+<style>
+</style>

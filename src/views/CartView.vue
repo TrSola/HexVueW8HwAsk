@@ -143,7 +143,7 @@
                      class='text-success'
                      >折扣價：</small
                    >
-                   {{ cartItem.final_total }}
+                   {{ Math.floor(carts.final_total) }}
                  </td>
                </tr>
              </template>
@@ -155,13 +155,22 @@
              </tr>
              <tr v-if='carts.final_total !== carts.total'>
                <td colspan='3' class='text-end text-success'>折扣價</td>
-               <td class='text-end text-success'>{{ carts.final_total }}</td>
+               <td class='text-end text-success'>{{ Math.floor(carts.final_total) }}</td>
              </tr>
            </tfoot>
          </table>
+         <div class="input-group mb-3 input-group-sm">
+        <input type="text" class="form-control" v-model="couponCode" placeholder="請輸入優惠碼" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+            套用優惠碼
+          </button>
+        </div>
+      </div>
+         <div class="d-flex justify-content-end mb-5">
+     <router-link to="/checkOut" class="btn btn-primary">去結帳</router-link></div>
        </div>
      </div>
-     <router-link to="/checkOut" class="btn btn-primary">去結帳</router-link>
 </template>
 
 <script setup>
@@ -180,6 +189,7 @@ const loadingStatus = ref({
 })
 const products = ref([])
 const product = ref({})
+const couponCode = ref('')
 
 // const cart = ref({})
 const cartStoreFromPinia = useCartStore()
@@ -325,7 +335,24 @@ const removeCartItem = (id) => {
 //   (newCart) => {
 //     console.log('Cart updated:', newCart)
 //   }
-// )
+// )+
+
+const addCouponCode = () => {
+  const url = `${apiUrl}/api/${apiPath}/coupon`
+  const coupon = {
+    code: couponCode.value
+  }
+  loadingStatus.value.loadingItem = ''
+  axios.post(url, { data: coupon }).then((response) => {
+    SwalHandle.showSuccessMsg('已加入優惠券')
+    getCart()
+    loadingStatus.value.loadingItem = ''
+  }).catch(() => {
+    loadingStatus.value.loadingItem = ''
+    SwalHandle.showErrorMsg('加入優惠券失敗')
+    getCart()
+  })
+}
 
 onMounted(() => {
   getProducts()

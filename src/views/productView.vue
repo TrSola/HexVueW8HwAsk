@@ -60,15 +60,15 @@
       </div>
       <h3 class="fw-bold">看看更多商品圖</h3>
       <div class="swiper-container mt-4 mb-5">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card border-0 mb-4 position-relative position-relative" v-for="(item) in product.imagesUrl" :key="item.id">
-              <img :src="item" class="card-img-top rounded-0 object-fit-cover" alt="..." height="800">
+        <div class="swiper-wrapper" >
+          <div class="swiper-slide" v-for="item in products" :key="item.id">
+            <div class="card border-0 mb-4 position-relative position-relative" v-if="item.id !== product.id">
+              <img :src="item.imageUrl" class="card-img-top rounded-0 object-fit-cover" alt="..." height="350">
               <a href="#" class="text-dark">
               </a>
               <div class="card-body p-0">
-                <h4 class="mb-0 mt-3">{{ product.title }}</h4>
-                <p class="card-text mb-0">${{ product.price }} <span class="text-muted "><del>${{ product.origin_price }}</del></span></p>
+                <h4 class="mb-0 mt-3">{{ item.title }}</h4>
+                <p class="card-text mb-0">${{ item.price }} <span class="text-muted "><del>${{ item.origin_price }}</del></span></p>
                 <p class="text-muted mt-3"></p>
               </div>
             </div>
@@ -84,9 +84,14 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import { useCartStore } from '../stores/cartStore'
+import Swiper from 'swiper'
+import 'swiper/css'
+
 const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
 const route = useRoute()
 const product = ref({})
+const products = ref({})
+const pagination = ref({})
 const cartStoreFromPinia = useCartStore()
 const { addToCart } = cartStoreFromPinia
 
@@ -103,8 +108,42 @@ const getProduct = () => {
       alert(err.response.data.message)
     })
 }
+
+const getData = (page = 1) => {
+  const { category = '' } = route.query
+  axios
+    .get(`${apiUrl}/api/${apiPath}/products?category=${category}&page=${page}`)
+    .then((res) => {
+      products.value = res.data.products
+      pagination.value = res.data.pagination
+    })
+    .catch((err) => alert(err.response.data.message))
+}
+
 onMounted(() => {
   getProduct()
+  getData()
+  window.scrollTo(0, 0)
+  // eslint-disable-next-line no-unused-vars
+  const mySwiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    slidesPerView: 2,
+    spaceBetween: 10,
+    breakpoints: {
+      767: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      }
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  })
 })
 
 </script>

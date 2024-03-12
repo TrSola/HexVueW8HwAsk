@@ -74,7 +74,7 @@
          <!-- 購物車列表 -->
          <template v-if="carts.carts && carts.carts.length === 0">
            <div class='text-end'>
-           <h2>試試放一項商品吧</h2>
+           <h2>試試放一項商品到購物車中吧</h2>
          </div>
          </template>
         <template v-else>
@@ -88,7 +88,7 @@
            </button>
          </div>
         </template>
-         <table class='table align-middle'>
+         <table class='table align-middle' v-if="carts.carts && carts.carts.length !== 0">
            <thead>
              <tr>
                <th></th>
@@ -159,7 +159,7 @@
              </tr>
            </tfoot>
          </table>
-         <div class="input-group mb-3 input-group-sm">
+         <div class="input-group mb-3 input-group-sm" v-if="carts.carts && carts.carts.length !== 0">
         <input type="text" class="form-control" v-model="couponCode" placeholder="請輸入優惠碼" />
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
@@ -167,7 +167,7 @@
           </button>
         </div>
       </div>
-         <div class="d-flex justify-content-end mb-5">
+         <div class="d-flex justify-content-end mb-5" v-if="carts.carts && carts.carts.length !== 0">
      <router-link to="/checkOut" class="btn btn-primary">去結帳</router-link></div>
        </div>
      </div>

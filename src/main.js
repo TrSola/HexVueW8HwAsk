@@ -18,6 +18,11 @@ import { date, currency } from '@/methods/filters'
 
 import App from './App.vue'
 import '../src/assets/main.css'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation, Pagination } from 'swiper/core'
+import 'swiper/swiper-bundle.min.css'
+
+SwiperCore.use([Navigation, Pagination])
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
@@ -45,5 +50,6 @@ app.component('VueLoading', Loading)
 app.component('v-form', Form)
 app.component('v-field', Field)
 app.component('error-message', ErrorMessage)
-
+app.component('SwiperComponent', Swiper)
+app.component('SwiperSlide', SwiperSlide)
 app.mount('#app')

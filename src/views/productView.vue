@@ -61,8 +61,8 @@
       <h3 class="fw-bold">看看更多商品圖</h3>
       <div class="swiper-container mt-4 mb-5">
         <div class="swiper-wrapper" >
-          <div class="swiper-slide" v-for="item in products" :key="item.id">
-            <div class="card border-0 mb-4 position-relative position-relative" v-if="item.id !== product.id">
+          <div class="swiper-slide" v-for="item in filteredProducts" :key="item.id">
+            <div class="card border-0 mb-4 position-relative position-relative">
               <img :src="item.imageUrl" class="card-img-top rounded-0 object-fit-cover" alt="..." height="350">
               <a href="#" class="text-dark">
               </a>
@@ -76,16 +76,46 @@
         </div>
       </div>
     </div>
+
+    <div class="test">
+      <template v-if="1">
+  <!-- <router-link to="/about">About</router-link> -->
+  <div>
+    <swiper :slides-per-view="1" :space-between="50"
+      :modules="modules"
+      navigation
+      :pagination="{ clickable: true }">
+      <swiper-slide>
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1443&q=80" alt="">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1529&q=80" alt="">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="">
+      </swiper-slide>
+    </swiper>
+  </div>
+</template>
+    </div>
+
 </template>
 
 <script setup>
 import '../assets/all.css'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import { useCartStore } from '../stores/cartStore'
-import Swiper from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Navigation, Pagination } from 'swiper'
+
+// Import Swiper styles
 import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+const modules = [Navigation, Pagination]
 
 const { VITE_APP_URL: apiUrl, VITE_APP_PATH: apiPath } = import.meta.env
 const route = useRoute()
@@ -120,33 +150,32 @@ const getData = (page = 1) => {
     .catch((err) => alert(err.response.data.message))
 }
 
+const filteredProducts = computed(() => {
+  // 確保 products.value 是一個陣列，否則返回空陣列
+  if (!Array.isArray(products.value)) {
+    return []
+  }
+
+  // 篩選出符合條件的產品
+  return products.value.filter(item => item.id !== product.value.id)
+})
+
 onMounted(() => {
   getProduct()
   getData()
   window.scrollTo(0, 0)
-  // eslint-disable-next-line no-unused-vars
-  const mySwiper = new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false
-    },
-    slidesPerView: 2,
-    spaceBetween: 10,
-    breakpoints: {
-      767: {
-        slidesPerView: 3,
-        spaceBetween: 30
-      }
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    }
-  })
 })
-
 </script>
 
-<style>
+<style scoped>
+.swiper {
+  width: 600px;
+  height: 400px;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 </style>

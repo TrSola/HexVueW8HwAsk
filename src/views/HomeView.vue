@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative">
-      <div class="position-absolute" style="top:0; bottom:0; left:0; right:0; background-image: url(https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=2500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8em9vfGVufDB8fDB8fHww);
+      <div class="position-absolute" style="top:0; bottom:0; left:0; right:0; background-image: url(https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=1950&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8em9vfGVufDB8fDB8fHww);
       background-position: center center; opacity: 0.2; z-index: -1"></div>
       <div class="container d-flex flex-column" style="min-height: 100vh;">
         <div class="row justify-content-center my-auto">
